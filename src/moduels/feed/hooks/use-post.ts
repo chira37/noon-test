@@ -4,7 +4,7 @@ import { Post } from "../types";
 
 export const usePost = (type: "home" | "favorite") => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   const getPosts = async () => {
@@ -15,15 +15,25 @@ export const usePost = (type: "home" | "favorite") => {
     } catch (error: any) {
       setIsError(true);
     }
-    setIsLoading(true);
+    setIsLoading(false);
   };
 
   const handleFavorite = async (id: string, favorite: boolean) => {
     try {
       if (favorite) {
-        setPosts(posts.map((post) => ({ ...post, favorite: post.id === id })));
+        setPosts(
+          posts.map((post) => {
+            if (post.id === id) return { ...post, favorite: true, likeCount: post.likeCount + 1 };
+            return post;
+          })
+        );
       } else if (type === "home") {
-        setPosts(posts.map((post) => ({ ...post, favorite: post.id === id && false })));
+        setPosts(
+          posts.map((post) => {
+            if (post.id === id) return { ...post, favorite: false, likeCount: post.likeCount - 1 };
+            return post;
+          })
+        );
       } else {
         setPosts(posts.filter((post) => post.id !== id));
       }

@@ -4,7 +4,7 @@ const path = require("path");
 const nextConfig = {
   reactStrictMode: true,
   sassOptions: {
-    prependData: `@import "@/styles/_variables.scss";`,
+    prependData: `@import "@/styles/_variables.scss"; @import "@/styles/_mixins.scss";`,
   },
   images: {
     remotePatterns: [

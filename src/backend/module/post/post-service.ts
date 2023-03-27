@@ -7,7 +7,7 @@ export const get = async (type: string) => {
   const response = await client
     .db()
     .collection("posts")
-    .find({ favorite: type === "favorite" && true })
+    .find(type === "favorite" ? { favorite: true } : {})
     .toArray();
   return response.map((item) => ({ ...item, id: item._id }));
 };

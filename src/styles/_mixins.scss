@@ -5,14 +5,3 @@
     @content;
   }
 }
-@mixin md {
-  @media (max-width: #{$screen-md}) {
-    @content;
-  }
-}
-
-@mixin lg {
-  @media (max-width: #{$screen-lg}) {
-    @content;
-  }
-}

@@ -3,17 +3,26 @@ import FeedFooter from "./components/feed-footer";
 import styles from "./feed.module.scss";
 import Post from "./components/post";
 import { usePost } from "./hooks/use-post";
+import FeedHeader from "./components/feed-header";
+import PostSkeleton from "./components/post-skeleton";
 
 const Feed = () => {
   const [type, setType] = useState<"home" | "favorite">("home");
 
-  const { posts, isError, isLoading, handleFavorite } = usePost(type);
+  const { posts, isLoading, handleFavorite } = usePost(type);
 
   return (
     <div className={styles.container}>
-      {posts.map((post: any, key) => (
-        <Post key={key} post={post} onClickFavorite={handleFavorite} />
+      <FeedHeader onChange={setType} active={type} />
+      <PostSkeleton isLoading={isLoading} />
+      {posts.map((post) => (
+        <Post key={post.id} post={post} onClickFavorite={handleFavorite} />
       ))}
+      {!isLoading && posts.length === 0 && (
+        <div className={styles.emptyPost}>
+          <span>No post found..</span>
+        </div>
+      )}
 
       <FeedFooter onChange={setType} />
     </div>
