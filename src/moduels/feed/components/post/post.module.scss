@@ -1,0 +1,74 @@
+.container {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #dcdcdc;
+  margin-bottom: 10px;
+}
+
+.header {
+  display: flex;
+  padding: 15px 20px;
+  align-items: center;
+
+  span {
+    margin-left: 20px;
+    color: $primary-color;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+
+  .image {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.overlayContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(3, 3, 3, 0.076);
+
+  .overlay {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.caption {
+  h4 {
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  p {
+    color: #ffffff;
+  }
+}
+
+.footer {
+  padding: 10px;
+}
+
+.likeContainer {
+  display: flex;
+  align-items: center;
+  svg {
+    fill: $primary-color;
+    height: 30px;
+    width: 30px;
+  }
+
+  span {
+    color: $primary-color;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+}

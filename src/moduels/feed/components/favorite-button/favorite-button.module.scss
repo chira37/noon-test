@@ -1,0 +1,15 @@
+.button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  display: inline-block;
+  svg {
+    cursor: pointer;
+    fill: #ffffff;
+    height: 30px;
+    width: 30px;
+  }
+}
